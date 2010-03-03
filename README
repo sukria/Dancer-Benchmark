@@ -1,0 +1,8 @@
+This is a set of Dancer and PSGI applications designed for benchmarking.
+
+Usage:
+
+$ ./bench dancer.hello						# bench a Dancer hello world
+$ ./bench dancer.hello ~/Perl/Dancer-1.150	# bench a Dancer hello world with an alternate Dancer lib
+
+
