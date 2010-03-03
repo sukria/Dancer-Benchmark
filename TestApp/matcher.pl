@@ -1,5 +1,5 @@
 #!/usr/bin/perl
 use Dancer;
-use Hello;
+use Matcher;
 print "${Dancer::VERSION}\n";
 dance;

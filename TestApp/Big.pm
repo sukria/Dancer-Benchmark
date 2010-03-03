@@ -7,4 +7,6 @@ foreach my $a ('a' .. 'z') {
     }
 }
 
+get '/last' => sub { 1 };
+
 1;

@@ -4,6 +4,6 @@ use Dancer ':syntax';
 get '/' => sub {
     "hello";
 };
+get '/last' => sub { 1 };
 
-get '/exit' => sub { exit 0 };
 true;

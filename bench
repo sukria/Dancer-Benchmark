@@ -3,7 +3,6 @@
 set -e
 #set -x
 
-curl="/usr/bin/curl"
 ab="/usr/sbin/ab"
 
 if [ ! -x "$ab" ]; then
@@ -48,6 +47,27 @@ case "$app" in
 		pid=$(ps fax | grep perl | grep big.pl | awk '{print $1}')
 		kill $pid
 	;;
+	"dancer.matcher")
+		echo "Benchmarking perl $perllib $testapp/matcher.pl..."
 
+		cd $testapp && perl $perllib matcher.pl --environment production &
+		sleep 2
+		$ab -n 1000 http://localhost:3000/foo/42 | grep 'Requests'
+		pid=$(ps fax | grep perl | grep matcher.pl | awk '{print $1}')
+		kill $pid
+	;;
+
+	"complete")
+		
+		for bench in "hello" "ten" "fifty" "hundred" "big"
+		do
+			echo -n "perl $perllib $bench.pl: "
+			cd $testapp && perl $perllib $bench.pl --environment production >/dev/null 2>&1 &
+			sleep 2
+			$ab -n 1000 http://localhost:3000/last 2>&1 | grep 'Requests'
+			pid=$(ps fax | grep perl | grep "$bench" | awk '{print $1}')
+			kill $pid
+		done
+	;;
 esac
 
