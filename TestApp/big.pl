@@ -1,6 +1,8 @@
 #!/usr/bin/perl
 use Dancer;
-use Hello;
+use Big;
+
+print "${Dancer::VERSION}\n";
 
 set environment => 'production';
 set access_log => false;

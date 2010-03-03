@@ -1,3 +1,6 @@
 layout: "main"
 logger: "file"
-
+cache: 1
+content_type: "text/plain"
+environment: "production"
+auto_reload: 0

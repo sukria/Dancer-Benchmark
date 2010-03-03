@@ -1,6 +1,5 @@
 package Big;
-use Dancer;
-set content_type => 'text/plain';
+use Dancer ':syntax';
 
 foreach my $a ('a' .. 'z') {
     foreach my $b ('a' .. 'z') {
